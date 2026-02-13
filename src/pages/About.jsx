@@ -25,7 +25,6 @@ const About = () => {
   };
 
   useEffect(() => {
-    console.log(dump);
     const initialNumbers = Array.from({ length: 12 }, (_, i) => i);
     setNumbers(shuffleArray(initialNumbers));
   }, [dump]);
@@ -152,4 +151,5 @@ const About = () => {
 };
 
 export default About;
+
 
