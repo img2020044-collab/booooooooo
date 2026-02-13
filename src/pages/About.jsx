@@ -28,7 +28,7 @@ const About = () => {
     console.log(dump);
     const initialNumbers = Array.from({ length: 12 }, (_, i) => i);
     setNumbers(shuffleArray(initialNumbers));
-  }, []);
+  }, [dump]);
 
   return (
     <div className="aboutPage">
@@ -152,3 +152,4 @@ const About = () => {
 };
 
 export default About;
+
