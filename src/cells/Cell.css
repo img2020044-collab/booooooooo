@@ -1,0 +1,156 @@
+/* ===============================
+   Wrapper for card + button
+================================ */
+.flip-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px; /* button close to card */
+  width: 100%;
+}
+
+/* ===============================
+   Card container
+   Sized to fit 4 rows on laptop
+================================ */
+.card-container {
+  height: 80px; /* KEY: controls grid fit */
+  width: 100%;
+  aspect-ratio: 580 / 1280; /* preserve original ratio */
+  perspective: 1200px;
+}
+
+/* ===============================
+   Card
+================================ */
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+/* Flip effect */
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+/* ===============================
+   Card faces
+================================ */
+.card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000;
+  border: solid black 2px;
+
+  /* IMAGE PADDING */
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+/* Front */
+.card-front {
+  transform: rotateY(0deg);
+}
+
+/* Back */
+.card-back {
+  transform: rotateY(180deg);
+}
+
+/* ===============================
+   Image styling
+================================ */
+.card-image {
+  width: 100%;
+  height: 100%;
+  /* object-fit: contain; */
+}
+
+/* ===============================
+   Flip button
+================================ */
+.flip-button {
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background-color: #222;
+  color: #fff;
+}
+
+.flip-button:hover {
+  background-color: #444;
+}
+
+/* ===============================
+   Disabled / Unclickable button
+================================ */
+.flip-button.disabled {
+  background-color: #999; /* muted look */
+  color: #444;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Ensure no clicks go through */
+.flip-button:disabled {
+  pointer-events: none;
+}
+
+.mini-modal {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+
+  background: rgba(15, 15, 15, 0.96);
+  color: #fff;
+
+  padding: 10px 14px;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  z-index: 9999;
+
+  animation: modalSlideFade 3.25s ease-out;
+}
+
+/* Emoji / icon */
+.mini-modal span {
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* Text */
+.mini-modal p {
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* ===============================
+   Entry animation
+================================ */
+@keyframes modalSlideFade {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
